@@ -1,0 +1,83 @@
+1.	Посмотреть где я 
+– pwd 
+
+2.	Создать папку
+– mkdir Andrey_QA
+
+3.	Зайти в папку 
+– cd !$
+
+4.	Создать 3 папки 
+– mkdir -p testdir{1..3}
+
+5.	Зайти в любую папку 
+– cd testdir1
+
+6.	Создать 5 файлов (3 txt, 2 json) 
+– touch testfile{1.txt,2.txt,3.txt,4.json,5.json}
+
+7.	Создать 3 папки 
+– mkdir -p testdir{4..6}
+
+8.	Вывести список содержимого папки 
+– ls -la
+
+9.	+ Открыть любой txt файл
+10.	+ написать туда что-нибудь, любой текст 
+11.	+ сохранить и выйти – 
+- vim testfile1.txt
+- i
+London is the capital of Great Britain
+- Esc:wq
+
+12.	Выйти из папки на уровень выше 
+– cd ..
+
+13.	Переместить любые 2 файла, которые вы создали, в любую другую папку 
+– mv testdir1/*.json testdir2
+
+14.	Cкопировать любые 2 файла, которые вы создали, в любую другую папку 
+– cp testdir2/*.json testdir3
+
+15.	Найти файл по имени 
+– find -name "*.txt"
+
+16.	Просмотреть содержимое в реальном времени (команда grep) 
+– tail -f testdir1/testfile1.txt | grep -C 3 "London is"
+- Ctrl+C
+
+17.	Вывести несколько первых строк из текстового файла 
+– head -4 testdir1/testfile1.txt
+
+18.	Вывести несколько последних строк из текстового файла 
+- tail -5 testdir1/testfile1.txt
+
+19.	Просмотреть содержимое длинного файла (команда less) 
+– less testdir1/testfile1.txt
+- q
+
+20.	Вывести дату и время 
+- date
+
+
+Задания * 
+1.	Отправить http запрос на сервер – http://162.55.220.72:5005/terminal-hw-request 
+1.1.	curl "http://162.55.220.72:5005/terminal-hw-request"
+1.2.	curl "http://162.55.220.72:5005/get_method?name=Andrey&age=38"
+
+2.	Написать скрипт, который выполнит автоматически пункты 3, 4, 5, 6, 7, 8, 13.
+2.1.	Выходим в корень: cd
+2.2.	vim myscript
+2.4.	
+-i
+#!/bin/bash
+cd Andrey_QA
+mkdir -p testdir{1..3}
+cd testdir1
+touch testfile{1.txt,2.txt,3.txt,4.json,5.json}
+mkdir -p testdir{4..6}
+ls -la
+mv ~/Andrey_QA/testdir1/*.json ~/Andrey_QA/testdir2
+- Esc:wq
+2.5 ./myscript
+
